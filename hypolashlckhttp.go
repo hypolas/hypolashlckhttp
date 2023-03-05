@@ -4,26 +4,27 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
 	"time"
 
+	helpers "github.com/hypolas/hypolashlckhelpers"
 	extractJSON "github.com/hypolas/readjsonfromflatpath"
 )
 
-// GetHTTP call URL and return result
-func GetHTTP() (result string) {
+// Call call URL and return result
+func Call() helpers.Result {
+	log.Info.Println("Titi")
 	// Load and stransform environment variable
 	taskLoadEnvironnement()
 
 	clientHTTP := constructHTTPClient()
-	logf.VarDebug(clientHTTP, "clientHTTP")
+	log.VarDebug(clientHTTP, "clientHTTP")
 
-	logf.Warn.Printf("%s\n", healthcheckHTTPUrl)
+	log.Warn.Printf("%s\n", healthcheckHTTPUrl)
 	reqHTTP, err := http.NewRequest("GET", healthcheckHTTPUrl, nil)
-	logf.VarDebug(reqHTTP, "reqHTTP")
+	log.VarDebug(reqHTTP, "reqHTTP")
 	if err != nil {
-		logf.Err.Println(err)
+		log.Err.Println(err)
 	}
 
 	reqHTTP.Header.Add("Accept", `application/json`)
@@ -37,41 +38,52 @@ func GetHTTP() (result string) {
 	resp, err := clientHTTP.Do(reqHTTP)
 
 	if err != nil {
-		logf.Err.Fatalf("%s\n", err)
+		log.Err.Fatalf("%s\n", err)
 	}
 	defer resp.Body.Close()
 
 	bodyHTTP, err := ioutil.ReadAll(resp.Body)
-	logf.VarDebug(bodyHTTP, "bodyHTTP")
-	logf.Err.Println(err)
+	result.Output = string(bodyHTTP)
+
+	log.VarDebug(bodyHTTP, "bodyHTTP")
+	log.Err.Println(err)
 
 	/*
 	*	If chek is on status html code the test stop here
 	 */
-	logf.VarDebug(healthcheckHTTPUseCode, "healthcheckHttpUseCode")
+	log.VarDebug(healthcheckHTTPUseCode, "healthcheckHttpUseCode")
 	if healthcheckHTTPUseCode {
 		if intIsIn(resp.StatusCode, healthcheckHTTPResponse) {
-			os.Exit(0)
+			result.IsUP = true
+			return result
 		} else {
-			os.Exit(1)
+			return result
 		}
 	}
 
 	/*
 	*	If chek is on REST API, the json will be tested
 	 */
-	logf.VarDebug(healthcheckHTTPJsonPath, "healthcheckHttpJsonPath")
+	log.VarDebug(healthcheckHTTPJsonPath, "healthcheckHttpJsonPath")
 	if healthcheckHTTPJsonPath != "" {
-		return extractJSON.ReadJSONFromFlatPath("", bodyHTTP)
+		if healthcheckHTTPExpected == extractJSON.ReadJSONFromFlatPath("", bodyHTTP) {
+			result.IsUP = true
+			return result
+		}
 	} else {
-		return strings.Trim(string(bodyHTTP), "\"")
+		if healthcheckHTTPExpected == strings.Trim(string(bodyHTTP), "\"") {
+			result.IsUP = true
+			return result
+		}
 	}
+	return result
 }
 
 /*
 *	Construct client HTTP
  */
 func constructHTTPClient() *http.Client {
+	logf := helpers.NewLogger()
 	client := &http.Client{
 		Transport: &http.Transport{},
 		Timeout:   0,

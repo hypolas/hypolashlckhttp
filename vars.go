@@ -2,47 +2,42 @@ package hypolashlckhttp
 
 import (
 	helpers "github.com/hypolas/hypolashlckhelpers"
-	"github.com/hypolas/hypolaslogger"
 	"os"
 	"strconv"
 	"strings"
 	"time"
 )
 
-func makeLogger(logPath string) hypolaslogger.HypolasLogger {
-	l := hypolaslogger.NewLogger(logPath)
-	return l
-}
-
 var (
-	logf = makeLogger(os.Getenv("HYPOLAS_LOGS_FOLDER"))
+	log    = helpers.NewLogger()
+	result = helpers.NewResult()
 )
 
 func taskLoadEnvironnement() {
 	help := helpers.InitHlckCustom{}
-
 	/*
 	*	Http check variable
 	 */
-	healthcheckHTTPExpected = help.InitEnvVars("HYPOLAS_HEALTHCHECK_HTTP_EXPECTED", "")
-	healthcheckHTTPJsonPath = help.InitEnvVars("HYPOLAS_HEALTHCHECK_HTTP_JSON", "")
-	logf.Warn.Printf("%s\n", os.Getenv("HYPOLAS_HEALTHCHECK_HTTP_URL"))
-	healthcheckHTTPUrl = help.InitEnvVars("HYPOLAS_HEALTHCHECK_HTTP_URL", "")
-	logf.Warn.Printf("%s\n", healthcheckHTTPUrl)
-	healthcheckHTTPProxy = help.InitEnvVars("HYPOLAS_HEALTHCHECK_HTTP_PROXY", "")
-	healthcheckHTTPHeaders = help.InitEnvVars("HYPOLAS_HEALTHCHECK_HTTP_HEADERS", "")
+	healthcheckHTTPExpected = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_EXPECTED", "")
+	healthcheckHTTPJsonPath = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_JSON", "")
+	log.Info.Println("Titi")
+	log.Warn.Printf("%s\n", os.Getenv("HYPOLAS_HEALTHCHECK_HTTP_URL"))
+	healthcheckHTTPUrl = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_URL", "")
+	log.Warn.Printf("%s\n", healthcheckHTTPUrl)
+	healthcheckHTTPProxy = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_PROXY", "")
+	healthcheckHTTPHeaders = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_HEADERS", "")
 
-	healthcheckHTTPTimeout, err = time.ParseDuration(help.InitEnvVars("HYPOLAS_HEALTHCHECK_HTTP_TIMEOUT", "0") + "s")
+	healthcheckHTTPTimeout, err = time.ParseDuration(help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_TIMEOUT", "0") + "s")
 	if err != nil {
-		logf.Err.Fatalln(err)
+		log.Err.Fatalln(err)
 	}
 
-	statusCode := strings.Split(help.InitEnvVars("HYPOLAS_HEALTHCHECK_HTTP_RESPONSES", ""), ",")
+	statusCode := strings.Split(help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_RESPONSES", ""), ",")
 	if statusCode[0] != "" {
 		healthcheckHTTPUseCode = true
 		for _, status := range statusCode {
 			code, err := strconv.Atoi(status)
-			logf.Err.Fatalln(err)
+			log.Err.Fatalln(err)
 			healthcheckHTTPResponse = append(healthcheckHTTPResponse, code)
 		}
 	}
@@ -76,9 +71,8 @@ var (
 	// Logs folder
 	healthcheckLogsFolder string
 
-	returnedValue string
-	separator     = "__"
-	isJSONEntry   = true
+	separator   = "__"
+	isJSONEntry = true
 
 	err error
 )
