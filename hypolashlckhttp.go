@@ -56,9 +56,8 @@ func Call() helpers.Result {
 		if intIsIn(resp.StatusCode, healthcheckHTTPResponse) {
 			result.IsUP = true
 			return result
-		} else {
-			return result
 		}
+		return result
 	}
 
 	/*
