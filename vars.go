@@ -1,13 +1,11 @@
 package hypolashlckhttp
 
 import (
-	"os"
 	"strconv"
 	"strings"
 	"time"
 
 	helpers "github.com/hypolas/hypolashlckhelpers"
-
 )
 
 var (
