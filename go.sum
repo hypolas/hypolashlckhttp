@@ -1,0 +1,10 @@
+github.com/hypolas/hypolashlckhelpers v0.0.1 h1:nVzhD4g8XzixO38oDQk7J5gnY1FN48zblcpw65DvwuU=
+github.com/hypolas/hypolashlckhelpers v0.0.1/go.mod h1:6AR+JEYUPNX0uumq2wuqUZtMvk/VnvqxDgKyQrqayZc=
+github.com/hypolas/hypolashlckhelpers v0.0.2 h1:BHzog3tiEZ2l8AwF7X/D42l/PHY3NuA7vs5RKlMxrzY=
+github.com/hypolas/hypolashlckhelpers v0.0.2/go.mod h1:6AR+JEYUPNX0uumq2wuqUZtMvk/VnvqxDgKyQrqayZc=
+github.com/hypolas/hypolashlckhelpers v0.0.3 h1:trmH9o2TbiDC0AfTnuJujKizsoENaakYP4hQeC3GEgI=
+github.com/hypolas/hypolashlckhelpers v0.0.3/go.mod h1:6AR+JEYUPNX0uumq2wuqUZtMvk/VnvqxDgKyQrqayZc=
+github.com/hypolas/hypolaslogger v0.0.4 h1:vffdaov1HUWPjZZxNRr57nAxMirpnnpKDLN5h0pnIVU=
+github.com/hypolas/hypolaslogger v0.0.4/go.mod h1:9o5WwO5O6FCj4nNYpxinDByLAM63jg1xR1IFdnYc7RU=
+github.com/hypolas/readjsonfromflatpath v0.0.2 h1:ugzbSIbpAuG/raHYWDIPLmHTFD4aMJ3R7bq8/Y6QmIA=
+github.com/hypolas/readjsonfromflatpath v0.0.2/go.mod h1:7AHq8Gp6W/FKlqYPtZcMpqD7igFQxnIgdDQcByisFm0=
