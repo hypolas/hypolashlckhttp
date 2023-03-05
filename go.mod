@@ -7,4 +7,4 @@ require (
 	github.com/hypolas/readjsonfromflatpath v0.0.3
 )
 
-require github.com/hypolas/hypolaslogger v0.0.7 // indirect
+require github.com/hypolas/hypolaslogger v0.0.8 // indirect

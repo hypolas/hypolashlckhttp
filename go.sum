@@ -6,6 +6,8 @@ github.com/hypolas/hypolaslogger v0.0.4 h1:vffdaov1HUWPjZZxNRr57nAxMirpnnpKDLN5h
 github.com/hypolas/hypolaslogger v0.0.4/go.mod h1:9o5WwO5O6FCj4nNYpxinDByLAM63jg1xR1IFdnYc7RU=
 github.com/hypolas/hypolaslogger v0.0.7 h1:wr6zeKuwH2ctcYJKYP7ePwaJl74uj09bjOzhP0U56bA=
 github.com/hypolas/hypolaslogger v0.0.7/go.mod h1:9o5WwO5O6FCj4nNYpxinDByLAM63jg1xR1IFdnYc7RU=
+github.com/hypolas/hypolaslogger v0.0.8 h1:lWKfJnrAWjgWSkBzt0M+09MCJvo+mKBeSldUr6XVuQw=
+github.com/hypolas/hypolaslogger v0.0.8/go.mod h1:9o5WwO5O6FCj4nNYpxinDByLAM63jg1xR1IFdnYc7RU=
 github.com/hypolas/readjsonfromflatpath v0.0.2 h1:ugzbSIbpAuG/raHYWDIPLmHTFD4aMJ3R7bq8/Y6QmIA=
 github.com/hypolas/readjsonfromflatpath v0.0.2/go.mod h1:7AHq8Gp6W/FKlqYPtZcMpqD7igFQxnIgdDQcByisFm0=
 github.com/hypolas/readjsonfromflatpath v0.0.3 h1:JJyPWMOCnBotYNMjT7OUtUS2kh80bPRUKOc37/WBUoM=
