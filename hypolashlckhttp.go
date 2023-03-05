@@ -1,16 +1,17 @@
 package hypolashlckhttp
 
 import (
-	extractJSON "github.com/hypolas/readjsonfromflatpath"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
 	"time"
+
+	extractJSON "github.com/hypolas/readjsonfromflatpath"
 )
 
-// GetHTTP call URL
+// GetHTTP call URL and return result
 func GetHTTP() (result string) {
 	// Load and stransform environment variable
 	taskLoadEnvironnement()

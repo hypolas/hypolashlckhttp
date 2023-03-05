@@ -22,7 +22,7 @@ func TestResolve(t *testing.T) {
 	if result != os.Getenv("HYPOLAS_HEALTHCHECK_HTTP_EXPECTED") {
 		logf.Err.Fatalln("result != os.Getenv(\"HYPOLAS_HEALTHCHECK_HTTP_EXPECTED\")")
 	} else {
-		logf.Info.Println("Math ! It ok !!: ", result)
+		logf.Info.Println("Match ! It ok !!: ", result)
 	}
 
 	readFile, err := os.Open(logf.LogFile.Name())
