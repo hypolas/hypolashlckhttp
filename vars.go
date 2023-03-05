@@ -7,6 +7,7 @@ import (
 	"time"
 
 	helpers "github.com/hypolas/hypolashlckhelpers"
+
 )
 
 var (
@@ -20,10 +21,7 @@ func taskLoadEnvironnement() {
 	 */
 	healthcheckHTTPExpected = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_EXPECTED", "")
 	healthcheckHTTPJsonPath = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_JSON", "")
-	log.Info.Println("Titi")
-	log.Warn.Printf("%s\n", os.Getenv("HYPOLAS_HEALTHCHECK_HTTP_URL"))
 	healthcheckHTTPUrl = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_URL", "")
-	log.Warn.Printf("%s\n", healthcheckHTTPUrl)
 	healthcheckHTTPProxy = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_PROXY", "")
 	healthcheckHTTPHeaders = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_HEADERS", "")
 
