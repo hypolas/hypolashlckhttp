@@ -7,15 +7,8 @@ import (
 	"testing"
 )
 
-var (
-	stringList = []string{
-		"http://#CMDSTART# hostname #CMDEND#:8082/ping",
-		"test #CMDSTART# hostname -i #CMDEND#/blabla",
-	}
-)
-
-// TestResolve test different strings format
-func TestResolve(t *testing.T) {
+// TestHTTPApi get API et test result
+func TestHTTPApi(t *testing.T) {
 	result := GetHTTP()
 
 	logf.Info.Println("Result => ", result)
