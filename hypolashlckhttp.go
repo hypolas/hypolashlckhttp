@@ -13,7 +13,6 @@ import (
 
 // Call call URL and return result
 func Call() helpers.Result {
-	log.Info.Println("Titi")
 	// Load and stransform environment variable
 	taskLoadEnvironnement()
 
@@ -82,7 +81,6 @@ func Call() helpers.Result {
 *	Construct client HTTP
  */
 func constructHTTPClient() *http.Client {
-	logf := helpers.NewLogger()
 	client := &http.Client{
 		Transport: &http.Transport{},
 		Timeout:   0,
@@ -90,7 +88,7 @@ func constructHTTPClient() *http.Client {
 
 	if healthcheckHTTPProxy != "" {
 		proxyURL, err := url.Parse(healthcheckHTTPProxy)
-		logf.Err.Println(err)
+		log.Err.Println(err)
 		client.Transport = &http.Transport{
 			Proxy: http.ProxyURL(proxyURL),
 		}

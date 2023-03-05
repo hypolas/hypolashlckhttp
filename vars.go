@@ -1,11 +1,12 @@
 package hypolashlckhttp
 
 import (
-	helpers "github.com/hypolas/hypolashlckhelpers"
 	"os"
 	"strconv"
 	"strings"
 	"time"
+
+	helpers "github.com/hypolas/hypolashlckhelpers"
 )
 
 var (
@@ -14,25 +15,24 @@ var (
 )
 
 func taskLoadEnvironnement() {
-	help := helpers.InitHlckCustom{}
 	/*
 	*	Http check variable
 	 */
-	healthcheckHTTPExpected = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_EXPECTED", "")
-	healthcheckHTTPJsonPath = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_JSON", "")
+	healthcheckHTTPExpected = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_EXPECTED", "")
+	healthcheckHTTPJsonPath = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_JSON", "")
 	log.Info.Println("Titi")
 	log.Warn.Printf("%s\n", os.Getenv("HYPOLAS_HEALTHCHECK_HTTP_URL"))
-	healthcheckHTTPUrl = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_URL", "")
+	healthcheckHTTPUrl = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_URL", "")
 	log.Warn.Printf("%s\n", healthcheckHTTPUrl)
-	healthcheckHTTPProxy = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_PROXY", "")
-	healthcheckHTTPHeaders = help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_HEADERS", "")
+	healthcheckHTTPProxy = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_PROXY", "")
+	healthcheckHTTPHeaders = helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_HEADERS", "")
 
-	healthcheckHTTPTimeout, err = time.ParseDuration(help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_TIMEOUT", "0") + "s")
+	healthcheckHTTPTimeout, err = time.ParseDuration(helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_TIMEOUT", "0") + "s")
 	if err != nil {
 		log.Err.Fatalln(err)
 	}
 
-	statusCode := strings.Split(help.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_RESPONSES", ""), ",")
+	statusCode := strings.Split(helpers.NewEnvVars("HYPOLAS_HEALTHCHECK_HTTP_RESPONSES", ""), ",")
 	if statusCode[0] != "" {
 		healthcheckHTTPUseCode = true
 		for _, status := range statusCode {
