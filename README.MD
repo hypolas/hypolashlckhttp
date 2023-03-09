@@ -1,4 +1,4 @@
-# Universal healthcheck from DevOps for DevOps :D
+# HTTP and API healthcheck
 
 This module is a part of [healthcheck & wait](https://github.com/hypolas/healthcheck)
 
