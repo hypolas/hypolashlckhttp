@@ -14,7 +14,7 @@ Export this environnement variables:
 |---|---|---|---|---|---|
 | `HYPOLAS_HEALTHCHECK_TYPE`  | *""*  | Type of healthcheck  | **X** | **http** |
 | `HYPOLAS_HEALTHCHECK_HTTP_URL`  | *""*   | URL   | **X** |  |
-| `HYPOLAS_HEALTHCHECK_HTTP_RESPONSES`  | *""*  | Hostname/IP of target   | | | (1)
+| `HYPOLAS_HEALTHCHECK_HTTP_RESPONSES`  | *""*  | Codes HTTP  | | | (1)
 | `HYPOLAS_HEALTHCHECK_HTTP_JSON`  | *""*  | Flatten JSON PATH   | | | (2)
 | `HYPOLAS_HEALTHCHECK_HTTP_EXPECTED`  | *""*  | Response of JSON PATH   | | | (3)
 | `HYPOLAS_HEALTHCHECK_HTTP_HEADERS`  | *""*  | Add Headers flatten   | | | (4)
